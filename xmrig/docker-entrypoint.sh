@@ -4,7 +4,8 @@ sysctl vm.nr_hugepages=128
 
 if [ -z "$numthreads" ]
 then
-      numthreads=$(($(nproc)-1))
+      for cache in $(lscpu | grep cache | sed "s/.* \([0-9]*\)K.*/\1/"); do ((mem+=cache)); done
+	  ((numthreads=$(nproc)*mem/2048))
       echo "\$numthreads is empty: set to $numthreads"
 else
       echo "\$numthreads is NOT empty"
@@ -12,7 +13,7 @@ fi
 
 if [ -z "$startport" ]
 then
-      startport=8100
+      startport=4444
       echo "\$startport is empty: set to $startport"
 else
       echo "\$startport is NOT empty"
@@ -21,7 +22,7 @@ fi
 
 if [ -z "$xmrpool" ]
 then
-      xmrpool=xmr-usa.dwarfpool.com
+      xmrpool=fr.minexmr.com
       echo "\$xmrpool is empty: set to $xmrpool"
 else
       echo "\$xmrpool is NOT empty"
