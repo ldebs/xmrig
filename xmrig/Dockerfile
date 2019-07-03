@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache  --virtual .build-deps \
+RUN apk add --no-cache --virtual .build-deps \
          git \
 		 cmake \
 		 make \
@@ -16,10 +16,14 @@ RUN apk add --no-cache  --virtual .build-deps \
  && cmake ../xmrig \
  && make -j$(nproc) \
  && ./xmrig --version \
+ && cp ./xmrig /usr/local/bin \
  && apk del .build-deps \
- && apk cache
+ && cd / \
+ && rm -rf /xmrig \
+ && apk add --no-cache \
+         libuv
+		 libmicrohttpd
 
-VOLUME /exe
+COPY docker-entrypoint.sh /usr/local/bin/
 
-CMD cp /xmrig/build/xmrig /exe
-
+ENTRYPOINT ["docker-entrypoint.sh"]
