@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ ${#@} > 0 ]]; then
+  $@
+  exit
+fi
+
 sysctl vm.nr_hugepages=128
 
 if [ -z "$numthreads" ]
