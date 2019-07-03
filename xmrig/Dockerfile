@@ -21,7 +21,7 @@ RUN apk add --no-cache --virtual .build-deps \
  && cd / \
  && rm -rf /xmrig \
  && apk add --no-cache \
-         libuv
+         libuv \
 		 libmicrohttpd
 
 COPY docker-entrypoint.sh /usr/local/bin/
