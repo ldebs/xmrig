@@ -2,14 +2,14 @@ FROM alpine:latest
 
 RUN apk add --no-cache --virtual .build-deps \
          git \
-		 cmake \
-		 make \
-		 g++ \
-		 musl-dev \
-		 libuv-dev \
-		 openssl-dev \
-		 libmicrohttpd-dev \
- &&	mkdir -p /xmrig/build \
+         cmake \
+         make \
+         g++ \
+         musl-dev \
+         libuv-dev \
+         openssl-dev \
+         libmicrohttpd-dev \
+ && mkdir -p /xmrig/build \
  && cd /xmrig \
  && git clone https://github.com/xmrig/xmrig.git \
  && cd build \
@@ -22,7 +22,9 @@ RUN apk add --no-cache --virtual .build-deps \
  && rm -rf /xmrig \
  && apk add --no-cache \
          libuv \
-		 libmicrohttpd
+         libmicrohttpd \
+         util-linux \
+		 bash
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
