@@ -12,6 +12,8 @@ RUN apk add --no-cache --virtual .build-deps \
  && mkdir -p /xmrig/build \
  && cd /xmrig \
  && git clone https://github.com/xmrig/xmrig.git \
+ && sed -i 's/constexpr const int kDefaultDonateLevel.*/constexpr const int kDefaultDonateLevel = 0;/'  src/donate.h \
+ && sed -i 's/constexpr const int kMinimumDonateLevel.*/constexpr const int kMinimumDonateLevel = 0;/'  src/donate.h \
  && cd build \
  && cmake ../xmrig \
  && make -j$(nproc) \
