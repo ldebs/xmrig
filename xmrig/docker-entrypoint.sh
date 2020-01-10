@@ -18,7 +18,7 @@ fi
 
 if [ -z "$startport" ]
 then
-      startport=5555
+      startport=443
       echo "\$startport is empty: set to $startport"
 else
       echo "\$startport is NOT empty"
