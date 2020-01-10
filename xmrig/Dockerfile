@@ -8,8 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
          musl-dev \
          libuv-dev \
          openssl-dev \
-         libmicrohttpd-dev \
-         
+         libmicrohttpd-dev \         
  && mkdir -p /xmrig/build \
  && cd /xmrig \
  && git clone https://github.com/xmrig/xmrig.git \
