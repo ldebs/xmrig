@@ -52,11 +52,11 @@ fi
 if [ -z "$donate" ]
 then
       echo "\$donate is empty"
-      xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads
-      echo -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads
+      xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads -k --tls
+      echo -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads -k --tls
 else
       echo "\$donate is NOT empty"
-      echo -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate
-      xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate
+      echo -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate -k --tls
+      xmrig -o stratum+tcp://$xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate -k --tls
 fi
 
