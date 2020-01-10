@@ -53,10 +53,10 @@ if [ -z "$donate" ]
 then
       echo "\$donate is empty"
       xmrig -o $xmrpool:$startport -u $username -p $password -t $numthreads -k --tls
-      echo -o $xmrpool:$startport -u $username -p $password -t $numthreads -k --tls
+      
 else
       echo "\$donate is NOT empty"
-      echo -o $xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate -k --tls
+      
       xmrig -o $xmrpool:$startport -u $username -p $password -t $numthreads --donate-level=$donate -k --tls
 fi
 
