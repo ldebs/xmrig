@@ -1,2 +1,2 @@
 # xmrig
-Alpine based xmrig mining tool
+Alpine based xmrig mining tool for automatic building
